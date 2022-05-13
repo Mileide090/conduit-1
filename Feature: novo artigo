@@ -22,19 +22,19 @@ Esquema do Cenário:Novo artigo com Campos não Preenchidos.
       Dado o usuário está na tela de "New Article"
       Quando não preenche os seguintes campos
            |<Article title>|<What's this Article about?>|<write you Article(in markdown)>|<enter tags>|
-      E ele clica no botão "Publish Article"
+      E ele clica no botão "Publish no Article"
       Então o sistema retorna a "<mensagem>"
 Exemplos:
-             |exemplos  |Article title|What's this Article about?|write you Article(in markdown) |enter tags   |mensagem                  |
-             |exemplo 01|             |testando                  |criando um teste em New Article|Implementação|title can't be blank      | 
-             |exemplo 02|teste        |                          |criando um teste em New Article|implementação|Title can't be blank      |
-             |exemplo 03|Teste        |testando                  |                               |implementação|title can't be blank      |
-             |exemplo 04|Teste        |testando                  |criando um teste em New Article|             |title can't be blank      |
-             |exemplo 05|             |                          |                               |             |title can't be blank      |
-             |exemplo 06|Teste        |                          |                               |             |description can't be blank|
-             |exemplo 07|             |testando                  |                               |             |title can't be blank      |
-             |exemplo 08|             |                          |criando um teste em New Article|             |title can't be blank      |
-             |exemplo 09|             |                          |                               |implementação|title can't be blank      |
+                        |Article title|What's this Article about?|write you Article(in markdown) |enter tags   |mensagem                  |
+                        |             |testando                  |criando um teste em New Article|Implementação|title can't be blank      | 
+                        |teste        |                          |criando um teste em New Article|implementação|Title can't be blank      |
+                        |Teste        |testando                  |                               |implementação|title can't be blank      |
+                        |Teste        |testando                  |criando um teste em New Article|             |title can't be blank      |
+                        |             |                          |                               |             |title can't be blank      |
+                        |Teste        |                          |                               |             |description can't be blank|
+                        |             |testando                  |                               |             |title can't be blank      |
+                        |             |                          |criando um teste em New Article|             |title can't be blank      |
+                        |             |                          |                               |implementação|title can't be blank      |
 
 
 Cenário:Excluir novo artigo criado
@@ -43,9 +43,9 @@ Cenário:Excluir novo artigo criado
        Então o Artigo é excluído 
 
 
-Cenário:Acessar Novo artigo criado
+Cenário:Acessar um Novo artigo criado
       Dado o usuário está na tela do "Feed global"
-      Quando ele seleciona a opção de artigos "create a new implementation"
+      Quando ele seleciona uma opção de artigo criado
       E o usuário clica no botão "create a New implementation"
       Então é exibida a tela "create a new implementation"
 
@@ -84,5 +84,70 @@ Cenário:Excluir o artigo dos favoritos
       Dado usuário está tela do artigo "explore implementação"
       E seleciona a opção "unfavorite article"
       Quando clica no botão "unfavorite article"
-      Então o artigo é excluído do favoritos.
+      Então o artigo é excluído dos favoritos.
+
+
+Cenário:Ter acesso dos meus artigos no meu perfil 
+       Dado usuário está navegando em "feed global"
+       E clica no botão do perfil 
+       Então a tela "perfil" é exibida.
+
+
+Cenário:Visualizar todos Meus artigos
+       Dado o usuário está na tela do "perfil"
+       Quando clica no botão meus artigos 
+       Então é exibida a tela do "meus artigos"
+
+
+Cenário:Meus artigos
+      Dado o usuário está na tela de "meus artigos"
+      Quando seleciona uma opção que já foi criada em "meus artigos"
+      E clica no botão "criado  este artigo teste"
+      Então é exibida a tela "criado este artigo teste"
+
+
+Cenário:Acessar a edição do Meu artigo criado 
+       Dado o usuário está na tela "criado este artigo teste"
+       Quando clica no botão "edit Article"
+       Então é exibida a tela para edição.
+
+
+Cenário:editar meu artigo
+      Dado o usuário está na tela de "editar artigo"
+      Quando ele muda os campos preenchidos para outros valores
+                |Article title|What's this article about?|write your article (in markdown)|
+      E clica no botão "Publish Article"
+      Então é concluído a edição 
+
+
+Cenário:Acessar Perfil
+       Dado o usuário está na tela do "perfil" 
+       Quando seleciona a opção de "Edit Profile settings"
+       E clica no botão "Edit Profile settings"
+       Então é exibida a tela de edição de perfil 
+
+       
+Cenário:Editar perfil 
+       Dado o usuário está na tela de "Edit Profile settings"
+       Quando preenche os seguintes campos mudando os valores
+              |URL of profile picture|username|short bio about you|email              |new password|
+              |https://testando      |mileide |teste              |marcelina@gmail.com|****        |
+       E clica no botão update settings 
+       Então a edição é feito com sucesso.
+
+
+Esquema de cenário: editar perfil com campos não preenchidos 
+         Dado o usuário está na tela de "edit profile settings"
+         Quando não preenche os seguintes campos 
+               |<URL of profile picture>|<username>|<short bio about you>|<email>|<new password>|
+         E clica no botão "update settings"
+         Então o sistema retorna a <mensagem>
+Exemplos:
+                |URL of profile pucture|username|short bio about you     |email                     |new password|mensagem      |
+                |https://testando      |mileide |teste                   |mileidemarcelina@gmail.com|            |erro de edição|
+                |https://testando      |mileide |teste                   |                          |*********   |erro de edição|
+              
+      
+
+             
 
