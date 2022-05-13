@@ -10,7 +10,7 @@ Canário:Acesso ao global feed sem login.
      E o fluxo é Encerrado.
 
 
-Cenário:Acessar "sign in"
+Cenário:Acessar login
      Dado o usuário está da tela do "global feed"
      Quando aciona o botão "sing in"
      Então a tela para Logar é exibida.
@@ -24,18 +24,20 @@ Cenário:Login válido
       E clica no botão "sign in"
       Então o login é feito com sucesso.
 
-Esquema do cenário:Valores inválidos  
+Esquema do cenário:login inválidos  
        Dado o usuário está na tela "sign in"
        Quando preenche os seguintes campos com valores inválidos 
            |<email>|<password>|
        E clica no botão "sign in"
        Então o sistema retorna a "<mensagem>"
 Exemplos:
-           |exemplos  |email          |password|mensagem|
-           |exemplo   |Mil@hormail.com|*****   |email or password os invalid|
+           |exemplos  |email                                    |password|mensagem|
+           |exemplo 01|Mil@hormail.com                          |*****   |email or password os invalid|
+           |exemplo 02|Mileide   @.outlook.com                  |*****   |uma parte seguida por"@" não deve conter o símbolo|
+           |exemplo 03|mileidemarcelina.co                      |******  |email or password os invalid|
+           |exemplo 04|Mileide Marcelina olimpio @ outlook . Com|*****   | uma parte seguida por"@" não deve conter o símbolo|
 
-
-Esquema do cenário:valores não preenchidos
+Esquema do cenário:login com valores não preenchidos
        Dado o usuário está na tela "sign in"
        Quando não preenche os seguintes campos
           |<email>|<password>|
@@ -45,9 +47,8 @@ Exemplos:
           |exemplos  |email          |password|mensagem|
           |exemplo 01|mil@hormail.com|        |password cat't be blank|
           |exemplo 02|               |******  |email cat't be blank   |
-           
 
-Cenário:Acessar "sign up"
+Cenário:Acessar cadastro
      Dado o usuário está da tela do "global feed"
      Quando aciona o botão "sing up"
      Então a tela para cadastro é exibida.
@@ -62,19 +63,20 @@ Cenário:cadastro válido
      Então o cadastro é concluído 
 
 
-Esquema do cenário:valores inválido 
+Esquema do cenário:cadastro inválido 
       Dado o usuário está na tela "sing up"
       E preenche os seguintes campos com valores inválidos 
             |<username>|<email>|<password>|
       E clica no botão "sing up"
       Então o sistema retorna a "<mensagem>"
 Exemplos:
-            |exemplos  |username|email             |password|mensagem|
-            |exemplo 01|Mileide |mil@.com          |******* |email is being used incorrectly in ".com"|
-            |exemplo 02|t       |mil@hormail.com   |******* |username has already been taken|
+            |exemplos  |username|email                       |password|mensagem|
+            |exemplo 01|Mileide |mil@.com                    |******* |email is being used incorrectly in ".com"|
+            |exemplo 02|t       |mil@hormail.com             |******* |username has already been taken|
+            |exemplo 03|m       |m                           |*       |inclua um "@" no endereço de e-mail "m" está com um "@" faltando|
+            |exemplo 04|M       |mileidemarcelina@outlook.com|*       |email has aldready been taken username has already been taken|
 
-
-Esquema do cenário:valores não preenchidos.
+Esquema do cenário:cadastro com valores não preenchidos.
       Dado o usuário está na tela de "sing up"
       E não preenche os seguintes campos com valores
           |<username>|<email>|<password>|
@@ -85,3 +87,4 @@ Esquema do cenário:valores não preenchidos.
           |exemplo 01|Mileide |                          |******* |email can't be blank|
           |exemplo 02|        |mileidemarcelina@gmail.com|******* |username can't be blank|
           |exemplo 03|Mileide |mileidemarcelina@gmail.com|        |password can't be blank|
+          |exemplo 04|        |                          |        |email can't be blank   |
